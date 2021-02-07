@@ -13,7 +13,13 @@ async def on_ready():
 
 @bot.command()
 async def hi(ctx):
-    await ctx.send(f'Hello {ctx.authot.name}')
+    # await ctx.send(f'Hello {ctx.author.name}')
+    by = discord.Embed(
+        description = f'Hello {ctx.author.name} How Are You',
+        color = discord.Color.red()
+    )
+    await ctx.send(embed=by)
+
 
 bot.run(TOKEN)
 
