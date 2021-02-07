@@ -36,7 +36,7 @@ async def embed(ctx, * , msg):
         description=msg,
         color = discord.Color.blue()
     )
-    await ctx.send(embed-embed)
+    await ctx.send(embed=embed)
 
 @embed.error
 async def embed_error(ctx, error):
