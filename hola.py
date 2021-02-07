@@ -20,6 +20,15 @@ async def hi(ctx):
     )
     await ctx.send(embed=by)
 
+@bot.command()
+async def ping(ctx):
+
+    ly = discord.Embed(
+        description = f'Your Ping Is {round(bot.latency*100)}ms',
+        color = discord.Color.red()
+    )
+    await ctx.send(embed=ly)
+
 
 bot.run(TOKEN)
 
