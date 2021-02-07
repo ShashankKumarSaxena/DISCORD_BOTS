@@ -38,7 +38,17 @@ async def embed(ctx, * , msg):
     )
     await ctx.send(embed-embed)
 
-    
+@embed.error
+async def embed_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        lem = discord.Embed(
+            description=f"Please write what you wanna embed {ctx.author.name}",
+            color = discord.Color.red()
+        )
+        await ctx.send(embed=lem)
+
+
+
 bot.run(TOKEN)
 
 
