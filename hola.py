@@ -73,6 +73,7 @@ async def clear_error(ctx, error):
 # kick command
 @bot.command()
 @commands.has_permissions(kick_members=True)
+@commands.bot_has_permissions(kick_members=True) # Check for the bot perms too
 async def kick(ctx, member:discord.Member , * , reason=None):
 
     await member.kick(reason=reason)
@@ -83,10 +84,14 @@ async def kick(ctx, member:discord.Member , * , reason=None):
 async def kick_error(ctx , error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('please mention a user to kick')
+     # Check for the missing permissions error too
+    if isinstance(error,commands.MissingPermissions):
+        await ctx.send("You don't have permissions to use this command") 
 
 # ban command
 @bot.command()
 @commands.has_permissions(ban_members=True)
+@commands.bot_has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member , * , reason=None):
 
     await member.ban(reason=reason)
