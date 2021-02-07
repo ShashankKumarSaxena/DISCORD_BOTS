@@ -1,7 +1,0 @@
-    if isinstance(error, commands.MissingRequiredArgument):
-        # await ctx.send(f"{ctx.author.name} Please Specify The Number Of Messages To Clear")
-        em = discord.Embed(
-            description="Please Specify the number of messages to clear",
-            color = discord.Color.red()
-        )
-        await ctx.send(embed=em)
