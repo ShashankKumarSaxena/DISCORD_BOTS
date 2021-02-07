@@ -47,6 +47,21 @@ async def embed_error(ctx, error):
         )
         await ctx.send(embed=lem)
 
+@bot.command()
+@commands.has_permissions(manage_messages=True)
+async def clear(ctx,amount:int):
+    await ctx.channel.purge(limit=amount+1)
+
+
+@clear.error
+async def clear_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        # await ctx.send(f"{ctx.author.name} Please Specify The Number Of Messages To Clear")
+        em = discord.Embed(
+            description=f"{ctx.author.name}Please Specify the number of messages to clear",
+            color = discord.Color.red()
+        )
+        await ctx.send(embed=em)
 
 
 bot.run(TOKEN)
