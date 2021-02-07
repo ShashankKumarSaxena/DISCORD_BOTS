@@ -114,12 +114,6 @@ async def unban_error(ctx, error):
         await ctx.send('please specify a user to ban')
 
 
-
- 
-
-
-
-
 bot.run(TOKEN)
 
 
