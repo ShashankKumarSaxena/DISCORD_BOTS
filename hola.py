@@ -11,5 +11,11 @@ with open("./config.json", 'r') as configjsonfile:
 async def on_ready():
     print('I am ready!')
 
+@bot.command()
+async def hi(ctx):
+    await ctx.send(f'Hello {ctx.authot.name}')
+
+bot.run(TOKEN)
+
 
 
