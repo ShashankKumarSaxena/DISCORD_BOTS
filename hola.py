@@ -10,3 +10,6 @@ with open("./config.json", 'r') as configjsonfile:
 @bot.event
 async def on_ready():
     print('I am ready!')
+
+
+
