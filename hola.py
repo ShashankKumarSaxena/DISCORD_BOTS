@@ -29,7 +29,16 @@ async def ping(ctx):
     )
     await ctx.send(embed=ly)
 
+@bot.command()
+@commands.has_permissions(manage_messages=True)
+async def embed(ctx, * , msg):
+    embed = discord.Embed(
+        description=msg,
+        color = discord.Color.blue()
+    )
+    await ctx.send(embed-embed)
 
+    
 bot.run(TOKEN)
 
 
