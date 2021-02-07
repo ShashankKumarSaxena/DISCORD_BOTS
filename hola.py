@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 import json
+import asyncio
+import random
+import time
+from datetime import datetime
 bot = commands.Bot(command_prefix='m!', case_insensitive=True)
 
 with open("./config.json", 'r') as configjsonfile:
@@ -111,8 +115,32 @@ async def unban(ctx, * , members):
 @unban.error
 async def unban_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('please specify a user to ban')
+        await ctx.send('please specify a user to unban')
 
+@bot.command()
+async def timer(ctx, seconds):
+    try:
+        secondint = int(seconds)
+        if secondint > 300:
+            await ctx.send('I dont think i can go over 5 mins')
+            raise BaseException
+        if secondint <= 0:
+            await ctx.send("I dint think i can do negatives")
+            raise BaseException
+
+        message = await ctx.send(f'Timer: {seconds}')
+        while True:
+            secondint -= 1
+            if secondint == 0:
+
+                await message.edit(content="Ended")
+                break
+
+            await message.edit(content=f"Timer: {secondint}")
+            await asyncio.sleep(1)
+        await ctx.send(f"{ctx.author.mention}, your countdown has been ended")
+    except ValueError:
+        await ctx.send("You must enter a number")
 
 bot.run(TOKEN)
 
